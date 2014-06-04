@@ -102,9 +102,15 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	
 	function woo_ddl_purchase_confirmation() {
 		global $ddl;
-		$ddl['page']['category']['pageType'] = 'thanks';
+		$ddl['page']['category']['pageType'] = 'confirmation';
 	}
 	add_action('woocommerce_thankyou', 'woo_ddl_purchase_confirmation');
+	
+	function woo_ddl_checkout() {
+		global $ddl;
+		$ddl['page']['category']['pageType'] = 'checkout';
+	}
+	add_action('woocommerce_after_checkout_form', 'woo_ddl_checkout');
 	
 	function woo_ddl_user_info() {
 		if (is_user_logged_in()) {
