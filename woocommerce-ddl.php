@@ -44,10 +44,10 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 		$first_cat = array_shift($product_categories);
 		
 		$ddl['product'][0]['category']['primaryCategory'] = esc_js($first_cat->name);
-		$ddl['product'][0]['attributes']['unit_price'] = $product->get_price();
+		$ddl['product'][0]['price']['price'] = $product->get_price();
 		
 		if ($product->is_on_sale()) {
-			$ddl['product'][0]['attributes']['regular_unit_price'] = $product->get_regular_price();
+			$ddl['product'][0]['price']['regular_unit_price'] = $product->get_regular_price();
 		}
 		
 		if ($product->get_stock_quantity()) {
@@ -107,8 +107,9 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	add_action('woocommerce_thankyou', 'woo_ddl_purchase_confirmation');
 	
 	function woo_ddl_checkout() {
-		global $ddl;
+		global $ddl, $order;
 		$ddl['page']['category']['pageType'] = 'checkout';
+		$ddl['transaction']['transactionID'] = $order->get_order_number();
 	}
 	add_action('woocommerce_after_checkout_form', 'woo_ddl_checkout');
 	
