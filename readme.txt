@@ -11,7 +11,7 @@ Adds a JavaScript data layer to your WooCommerce installation that conforms to t
 
 == Description ==
 
-The W3C have issues a [Customer Experience Digital Layer Specification](http://www.w3.org/community/custexpdata/) that allows sites to define a JavaScript object to make data accessible to third parties.
+The W3C have issued a [Customer Experience Digital Layer Specification](http://www.w3.org/community/custexpdata/) that allows sites to define a JavaScript object to make data accessible to third parties.
 
 This plugin creates that object for an installation of WooCommerce, exposing various pieces of product and cart data to allow integration with third party code (for example, cart abandonment scripts).
 
